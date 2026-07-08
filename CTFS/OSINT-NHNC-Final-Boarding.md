@@ -27,7 +27,7 @@ NHNC{YYYYMMDD_FLIGHT}
 
 ## Challenge Image
 
-![Challenge](image/Final_boarding.png)
+![Challenge](images/Final_boarding.png)
 
 ---
 
