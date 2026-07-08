@@ -27,7 +27,7 @@ NHNC{YYYYMMDD_FLIGHT}
 
 ## Challenge Image
 
-![Challenge](Final_boarding.png)
+![Challenge](image/Final_boarding.png)
 
 ---
 
@@ -41,9 +41,9 @@ Golden Week in Japan ends on **May 5, 2026**, which immediately gives us the fir
 
 To verify this, I also checked the image metadata.
 
-![Golden Week](golden_week.png)
+![Golden Week](images/golden_week.png)
 
-![Metadata](metadata.png)
+![Metadata](images/metadata.png)
 
 So the first part becomes:
 
@@ -57,7 +57,7 @@ NHNC{20260505_XXXXX}
 
 After zooming into the image, the aircraft registration becomes readable.
 
-![Zoomed Image](Final_boarding_zoomed.png)
+![Zoomed Image](images/Final_boarding_zoomed.png)
 
 The aircraft registration is:
 
@@ -85,7 +85,7 @@ By matching the timing and the challenge description, the correct flight is:
 GK55
 ```
 
-![Flight History](flight.png)
+![Flight History](images/flight.png)
 
 Although flight tracking websites also display the ICAO callsign, the challenge specifically requests the **IATA flight number**, which is:
 
