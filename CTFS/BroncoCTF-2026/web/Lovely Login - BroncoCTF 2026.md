@@ -1,18 +1,19 @@
-بسم الله الرحمن الرحيم  - اللهم صلي على سيدنا محمد 
-
+# Lovely Login - BroncoCTF 2026 Writeup
+بسم الله الرحمن الرحيم 
 ## Challenge Description
 
-> Welcome to our lovely new login page 💕. The developers swear it’s secure… but they may have forgotten to clean up a few things before launch.
+> Welcome to our lovely new login page 💕. The developers swear it's secure... but they may have forgotten to clean up a few things before launch.
 >
 > Can you figure out how authentication works and log in as the right user?
 >
 > **P.S.** Please follow my wishes and do not scrape it...
 
-https://broncoctf-lovely-login.chals.io/
+**Challenge:**
+<https://broncoctf-lovely-login.chals.io/>
 
 ---
 
-![[login.png]]
+![Login Page](images/login.png)
 
 At first glance, it looks like a normal internal login page.
 
@@ -33,7 +34,7 @@ There wasn't anything interesting except that the login request is sent to the `
 <div id="out"></div>
 ```
 
-![[out.png]]
+![Page Source](images/out.png)
 
 Since nothing useful appeared in the source code, I started my usual directory fuzzing using **dirsearch**.
 
@@ -50,7 +51,7 @@ It returned two interesting endpoints:
 
 I checked the `robots.txt` file first.
 
-```txt
+```text
 User-agent: *
 Disallow: /security
 
@@ -59,7 +60,7 @@ Disallow: /security
 
 The last line looked like Base64, so I decoded it.
 
-![[base64.png]]
+![Base64 Decode](images/base64.png)
 
 Now we have four possible usernames:
 
@@ -72,36 +73,31 @@ guest
 
 Before trying them manually or starting a brute-force attack, I decided to check the other endpoint.
 
-```
+```text
 /security
 ```
 
-![[security.png]]
+![Security Notes](images/security.png)
 
 It seems the developers forgot to remove their internal security notes before deployment.
 
-![[qasrelmemez_يا_ريتني_ما_سألت_فيلم_تمبلت_الباشا_تلميذ_كريم_عبد_العزيز.png]]
+![Meme](images/qasrelmemez_يا_ريتني_ما_سألت_فيلم_تمبلت_الباشا_تلميذ_كريم_عبد_العزيز.png)
 
-## Summarizing the notes
+## Summarizing the Notes
 
 The page reveals two important details:
 
 - Passwords are derived from usernames.
 - They are simply stored **backwards** instead of being hashed.
 
-So if the username is:
+For example:
 
 ```text
-jeff
+Username: jeff
+Password: ffej
 ```
 
-the password becomes:
-
-```text
-ffej
-```
-
-That means the administrator credentials should be:
+So the administrator credentials should be:
 
 ```text
 admin:nimda
@@ -109,14 +105,16 @@ admin:nimda
 
 And... it worked.
 
-![[BroncoCTF-2026/web/images/flag.png]]
+![Flag](images/flag.png)
 
-### Flag
+## Flag
 
 ```text
 bronco{R3v3rs1ng_1s_S3cure}
 ```
 
+---
 
-*Thank u for reading .*
-*متنساش تصلي على النبي :>*
+*Thanks for reading! ❤️*
+
+> **Don't forget to send blessings upon Prophet Muhammad ﷺ.**>*
