@@ -1,3 +1,4 @@
+# Bundle 99 - BroncoCTF 2026 Writeup
 
 ## Challenge Description
 
@@ -25,9 +26,7 @@ Output:
 Bundle_99: Zip data (MIME type "application/x-krita-resourcebundle")
 ```
 
-So it's just a ZIP archive.
-
-I extracted it.
+The file is simply a ZIP archive, so I extracted it.
 
 ```bash
 unzip Bundle_99
@@ -45,50 +44,56 @@ inflating: meta.xml
 
 At first, I expected to find the flag inside one of the XML files, but there was nothing useful.
 
-The interesting part was the MIME type:
+The interesting clue was the MIME type:
 
 ```text
 application/x-krita-resourcebundle
 ```
 
-After a little research, I found that this is a **Krita Resource Bundle**, which contains custom brushes for the Krita drawing application.
+After a little research, I discovered that this is a **Krita Resource Bundle**, which contains custom brushes for the Krita drawing application.
 
-![[cff4fcf3ab8968828f497c61a72c935c.jpg]]
+![Krita](images/cff4fcf3ab8968828f497c61a72c935c.jpg)
 
-So I installed Krita and created a new project.
+Although the challenge mentions that it can be solved online, I used a local installation of Krita.
 
-Now we need to import the brush contained in:
+The extracted bundle contains the following brush preset:
 
 ```text
 paintoppresets/Brush 99.kpp
 ```
 
-Open:
+To import it, open:
 
 ```text
 Settings → Manage Resources...
 ```
 
-Then import the brush preset.
+Then import the extracted brush preset.
 
-![[import.png]]
+![Import Resources](images/import.png)
 
-Select the extracted brush file.
+Select the `Brush 99.kpp` file.
 
-![[brush.png]]
+![Brush Preset](images/brush.png)
 
-After importing it, select **Brush 99** from the brush presets.
+After importing it, select **Brush 99** from the brush list.
 
-![[add brush.png]]
+![Select Brush](images/add%20brush.png)
 
 Now simply draw anywhere on the canvas.
 
-Instead of a normal brush stroke, it paints the flag directly.
+Instead of drawing a normal brush stroke, the brush paints the flag directly.
 
-![[flag.png]]
+![Flag](images/flag.png)
 
-### Flag
+## Flag
 
 ```text
 bronco{1m4n4rt15ttru5t}
 ```
+
+---
+
+*Thanks for reading! ❤️*
+
+> **Don't forget to send blessings upon Prophet Muhammad ﷺ.**
